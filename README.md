@@ -8,7 +8,7 @@ On Arch linux create file /etc/systemd/system/root-suspend.service
 
     [Service]
     Type=simple
-    ExecStart=-/usr/bin/pkill sshfs
+    ExecStart=-/usr/bin/local/windscribe_connect.sh
 
     [Install]
     WantedBy=sleep.target
@@ -16,3 +16,4 @@ On Arch linux create file /etc/systemd/system/root-suspend.service
 Finaly run
 
     systemctl enable root-suspend 
+    chmod +x /usr/local/windscribe_connect.sh
