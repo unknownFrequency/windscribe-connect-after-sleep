@@ -14,4 +14,5 @@ On Arch linux create file /etc/systemd/system/root-suspend.service
     WantedBy=sleep.target
 
 Finaly run
+
     systemctl enable root-suspend 
