@@ -4,12 +4,12 @@
 case "$(curl -s --max-time 2 -I http://google.com | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
 	[23]) echo "Connected";;
 	5) echo "Proxy error";;
-	*) echo "Not connected"
-		pkill windscribe
-		sleep 1
-		pkill openvpn
-		sleep 1
-		windscribe start
-		sleep 1
-		windscribe connect && echo "Windscribe connected && echo "Windscribe connected" > ~/Documents/windscribe.log";;
+	*) echo "Not connected" && \
+		killall windscribe
+	  wait windscribe openvpn 2>/dev/null
+	  echo "Killed windscribe and openvpn"
+		systemctl start windscribe
+		# su -l username -c 'windscribe start;' # If windscribe should be started by non-root user
+		windscribe start 
+		windscribe connect;;
 esac
