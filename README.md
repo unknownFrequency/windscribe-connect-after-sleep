@@ -1,19 +1,9 @@
 # windscribe-connect-after-sleep
 
-On Arch linux create file /etc/systemd/system/root-resume.service
+On Arch linux edit file /etc/pam.d/system-login and add
+    
+    auth       optional   pam_exec.so /path/to/windscribe_connect.sh
+    
+Finaly make script executable
 
-    [Unit]
-    Description=Local system resume actions
-    After=suspend.target
-
-    [Service]
-    Type=simple
-    ExecStart=/usr/local/bin/windscribe_connect.sh
-
-    [Install]
-    WantedBy=suspend.target
-
-Finaly run
-
-    systemctl enable root-resume 
     chmod +x /usr/local/windscribe_connect.sh
