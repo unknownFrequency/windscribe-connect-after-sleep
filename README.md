@@ -6,4 +6,4 @@ On Arch linux edit file /etc/pam.d/system-login and add
     
 Finaly make script executable
 
-    chmod +x /usr/local/windscribe_connect.sh
+    chmod +x /usr/local/bin/windscribe_connect.sh
